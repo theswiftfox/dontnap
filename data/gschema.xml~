@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/com/github/theswiftfox/dontnap/" id="com.github.theswiftfox.dontnap">
+    <key name="active" type="b">
+      <default>false</default>
+      <summary>Stores the last state of the indicator</summary>
+      <description>Whether the sleep prevention was enabled or not</description>
+    </key>
+    <key name="ac-type" type="string">
+      <default>suspend</default>
+      <summary>Stores the last state of the sleep-inactive-ac-type setting</summary>
+      <description>Do not change this manually</description>
+    </key>
+    <key name="bat-type" type="string">
+      <default>suspend</default>
+      <summary>Stores the last state of the sleep-inactive-battery-type setting</summary>
+      <description>Do not change this manually</description>
+    </key>
+    <key name="dim-on-idle" type="b">
+      <default>true</default>
+      <summary>Stores the last state of the idle-dim setting</summary>
+      <description>Do not change this manually</description>
+    </key>
+    <key name="session-timeout" type="uint">
+      <default>300</default>
+      <summary>Stores the last state of the idle-delay setting</summary>
+      <description>Do not change this manually</description>
+    </key>
+  </schema>
+</schemalist>
