@@ -17,3 +17,5 @@ shared_module('dontnap-indicator',
     install: true,
     install_dir: indicators_dir
 )
+
+subdir('data')

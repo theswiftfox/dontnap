@@ -27,10 +27,11 @@ public class DontNap.Indicator : Wingpanel.Indicator {
 
     private Settings power_settings;
     private Settings session_settings;
-    private string sleep_settings_ac = "";
-    private string sleep_settings_bat = "";
-    private bool idle_dim = false;
-    private uint session_timeout = 0;
+
+    public string sleep_settings_ac { get; set; }
+    public string sleep_settings_bat { get; set; }
+    public bool idle_dim { get; set; }
+    public uint session_timeout { get; set; }
 
     public Indicator () {
         Object (
@@ -49,14 +50,20 @@ public class DontNap.Indicator : Wingpanel.Indicator {
         widget = new Gtk.Grid ();
         widget.attach (nap_switch, 0, 2);
 
+        var settings = new Settings("com.github.theswiftfox.dontnap");
+
         // initialize the glib settings loaders and get the currently stored values
         this.power_settings = new Settings("org.gnome.settings-daemon.plugins.power");
         this.session_settings = new Settings("org.gnome.desktop.session");
-        this.sleep_settings_ac = power_settings.get_string("sleep-inactive-ac-type");
-        this.sleep_settings_bat = power_settings.get_string("sleep-inactive-battery-type");
-        this.idle_dim = power_settings.get_boolean("idle-dim");
-        this.session_timeout = session_settings.get_uint("idle-delay");
 
+        settings.bind("ac-type", this, "sleep_settings_ac", GLib.SettingsBindFlags.DEFAULT);
+        settings.bind("bat-type", this, "sleep_settings_bat", GLib.SettingsBindFlags.DEFAULT);
+        settings.bind("dim-on-idle", this, "idle_dim", GLib.SettingsBindFlags.DEFAULT);
+        settings.bind("session-timeout", this, "session_timeout", GLib.SettingsBindFlags.DEFAULT);
+        settings.bind("active", nap_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+
+        
+        icon.set_overlay_icon_name (nap_switch.active ? "network-vpn-lock-symbolic" : "");
         nap_switch.notify["active"].connect (() => {
             // if the switch is enabled display small lock on top of base icon 
             icon.set_overlay_icon_name (nap_switch.active ? "network-vpn-lock-symbolic" : "");
