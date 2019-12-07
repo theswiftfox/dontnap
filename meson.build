@@ -1,4 +1,4 @@
-project('DontNap', 'vala', 'c', version: '1.0.0')
+project('com.github.theswiftfox.dontnap', 'vala', 'c', version: '1.0.0')
 
 i18n = import('i18n')
 gettext_name = meson.project_name() + '-indicator'
