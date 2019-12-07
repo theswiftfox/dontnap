@@ -62,7 +62,6 @@ public class DontNap.Indicator : Wingpanel.Indicator {
         settings.bind("session-timeout", this, "session_timeout", GLib.SettingsBindFlags.DEFAULT);
         settings.bind("active", nap_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
-        
         icon.set_overlay_icon_name (nap_switch.active ? "network-vpn-lock-symbolic" : "");
         nap_switch.notify["active"].connect (() => {
             // if the switch is enabled display small lock on top of base icon 

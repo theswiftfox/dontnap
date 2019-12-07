@@ -2,10 +2,12 @@ Source: com.github.theswiftfox.dontnap
 Section: x11
 Priority: optional
 Maintainer: Patrick Gantner <patrick.gantner@linesofcode.at>
-Build-Depends: libglib2.0-dev,
+Build-Depends: debhelper (>= 10),
+               libglib2.0-dev,
                libgtk-3-dev,
                libwingpanel-2.0-dev,
                meson,
+               elementary-sdk, 
                valac (>= 0.40.0)
 Standards-Version: 3.9.3
 Homepage: https://github.com/theswiftfox/dontnap
