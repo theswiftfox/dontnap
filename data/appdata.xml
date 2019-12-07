@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2019 Your Name <you@email.com> -->
+<!-- Copyright 2019 Patrick Gantner <patrick.gantner@linesofcode.at> -->
 <component type="addon">
   <id>com.github.theswiftfox.dontnap</id>
   <extends>io.elementary.wingpanel</extends>
