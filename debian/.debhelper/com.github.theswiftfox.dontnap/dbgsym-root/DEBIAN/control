@@ -1,0 +1,13 @@
+Package: com.github.theswiftfox.dontnap-dbgsym
+Package-Type: ddeb
+Source: com.github.theswiftfox.dontnap
+Version: 0.1ubuntu2
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Patrick Gantner <patrick.gantner@linesofcode.at>
+Installed-Size: 35
+Depends: com.github.theswiftfox.dontnap (= 0.1ubuntu2)
+Section: debug
+Priority: optional
+Description: debug symbols for com.github.theswiftfox.dontnap
+Build-Ids: c90bb473e580672bccd857f13b16ec561d2255f4

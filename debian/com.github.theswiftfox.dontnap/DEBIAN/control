@@ -1,0 +1,11 @@
+Package: com.github.theswiftfox.dontnap
+Version: 0.1ubuntu2
+Architecture: amd64
+Maintainer: Patrick Gantner <patrick.gantner@linesofcode.at>
+Installed-Size: 36
+Depends: dconf-gsettings-backend | gsettings-backend, libglib2.0-0 (>= 2.30.0), libgtk-3-0 (>= 3.0.0), libwingpanel-2.0-0
+Enhances: wingpanel
+Section: x11
+Priority: optional
+Homepage: https://github.com/theswiftfox/dontnap
+Description: Wingpanel Indicator to temporarily disable auto suspend.
