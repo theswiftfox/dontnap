@@ -27,11 +27,13 @@ public class DontNap.Indicator : Wingpanel.Indicator {
 
     private Settings power_settings;
     private Settings session_settings;
+    private Settings dpms_settings;
 
     public string sleep_settings_ac { get; set; }
     public string sleep_settings_bat { get; set; }
     public bool idle_dim { get; set; }
     public uint session_timeout { get; set; }
+    public int standby_time {get; set; }
 
     public Indicator () {
         Object (
@@ -55,11 +57,13 @@ public class DontNap.Indicator : Wingpanel.Indicator {
         // initialize the glib settings loaders and get the currently stored values
         this.power_settings = new Settings("org.gnome.settings-daemon.plugins.power");
         this.session_settings = new Settings("org.gnome.desktop.session");
+        this.dpms_settings = new Settings("io.elementary.dpms");
 
         settings.bind("ac-type", this, "sleep_settings_ac", GLib.SettingsBindFlags.DEFAULT);
         settings.bind("bat-type", this, "sleep_settings_bat", GLib.SettingsBindFlags.DEFAULT);
         settings.bind("dim-on-idle", this, "idle_dim", GLib.SettingsBindFlags.DEFAULT);
         settings.bind("session-timeout", this, "session_timeout", GLib.SettingsBindFlags.DEFAULT);
+        settings.bind("standby-time", this, "standby_time", GLib.SettingsBindFlags.DEFAULT);
         settings.bind("active", nap_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
         icon.set_overlay_icon_name (nap_switch.active ? "network-vpn-lock-symbolic" : "");
@@ -72,18 +76,21 @@ public class DontNap.Indicator : Wingpanel.Indicator {
                 this.sleep_settings_bat = power_settings.get_string("sleep-inactive-battery-type");
                 this.idle_dim = power_settings.get_boolean("idle-dim");
                 this.session_timeout = session_settings.get_uint("idle-delay");
+                this.standby_time = dpms_settings.get_int("standby-time");
 
                 // disable sleep settings and session idle
                 power_settings.set_string("sleep-inactive-ac-type", "nothing");
                 power_settings.set_string("sleep-inactive-battery-type", "nothing");
                 power_settings.set_boolean("idle-dim", false);
                 session_settings.set_uint("idle-delay", 0);
+                dpms_settings.set_int("standby-time", 0);
             } else {
                 // restore settings
                 power_settings.set_string("sleep-inactive-ac-type", this.sleep_settings_ac);
                 power_settings.set_string("sleep-inactive-battery-type", this.sleep_settings_bat);
                 power_settings.set_boolean("idle-dim", this.idle_dim);
                 session_settings.set_uint("idle-delay", this.session_timeout);
+                dpms_settings.set_int("standby-time", this.standby_time);
             }
         });
 
