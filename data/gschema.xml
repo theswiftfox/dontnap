@@ -26,5 +26,10 @@
       <summary>Stores the last state of the idle-delay setting</summary>
       <description>Do not change this manually</description>
     </key>
+    <key name="standby-time" type="i">
+      <default>300</default>
+      <summary>Stores the last state of the standby-time setting</summary>
+      <description>Do not change this manually</description>
+    </key>
   </schema>
 </schemalist>
