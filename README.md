@@ -1,4 +1,4 @@
-#DISCONTINUED  
+# DISCONTINUED  
 As I am using a windows machine for my current development tasks I don't have an active elementaryOS installation anymore. Pull requests etc. are still appreciated, however for the time being I won't develop this further myself.
 
 # DontNap
